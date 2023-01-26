@@ -11,6 +11,9 @@
 
     <artifactId>service</artifactId>
     <packaging>pom</packaging>
+    <modules>
+        <module>service_gateway</module>
+    </modules>
 
     <dependencies>
         <!--数据载体-->
@@ -44,11 +47,11 @@
             <artifactId>mysql-connector-java</artifactId>
         </dependency>
 
-<!--        &lt;!&ndash; 服务注册 &ndash;&gt;-->
-<!--        <dependency>-->
-<!--            <groupId>com.alibaba.cloud</groupId>-->
-<!--            <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>-->
-<!--        </dependency>-->
+        <!-- 服务注册 -->
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+        </dependency>
 
 <!--        &lt;!&ndash; 服务调用feign &ndash;&gt;-->
 <!--        <dependency>-->

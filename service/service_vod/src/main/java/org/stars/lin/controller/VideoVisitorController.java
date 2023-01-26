@@ -22,7 +22,7 @@ import java.util.Map;
  * @since 2023-01-26
  */
 @RestController
-@RequestMapping("/lin/video-visitor")
+@RequestMapping("/vod/video-visitor")
 public class VideoVisitorController {
 
     @Autowired
