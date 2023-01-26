@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import org.stars.entity.model.vod.Course;
 import org.stars.entity.vo.vod.CourseFormVo;
+import org.stars.entity.vo.vod.CoursePublishVo;
 import org.stars.entity.vo.vod.CourseQueryVo;
 import org.stars.lin.result.Result;
 import org.stars.lin.service.CourseService;
@@ -51,6 +52,25 @@ public class CourseController {
     @PostMapping("update")
     public Result update(@RequestBody CourseFormVo courseFormVo) {
         courseService.updateCourseId(courseFormVo);
+        return Result.ok(courseFormVo.getId());
+    }
+
+    @GetMapping("getCoursePublishVo/{id}")
+    public Result getCoursePublishVoById(@PathVariable Long id) {
+        CoursePublishVo coursePublishVo = courseService.getCoursePublishVo(id);
+        return Result.ok(coursePublishVo);
+    }
+
+    @PutMapping("publishCourseById/{id}")
+    public Result publishCourseById(
+            @PathVariable Long id){
+        courseService.publishCourseById(id);
+        return Result.ok();
+    }
+
+    @DeleteMapping("remove/{id}")
+    public Result remove(@PathVariable Long id) {
+        courseService.removeCourseById(id);
         return Result.ok();
     }
 }

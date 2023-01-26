@@ -10,16 +10,16 @@ import org.stars.entity.model.vod.CourseDescription;
 import org.stars.entity.model.vod.Subject;
 import org.stars.entity.model.vod.Teacher;
 import org.stars.entity.vo.vod.CourseFormVo;
+import org.stars.entity.vo.vod.CoursePublishVo;
 import org.stars.entity.vo.vod.CourseQueryVo;
 import org.stars.lin.mapper.CourseMapper;
-import org.stars.lin.service.CourseDescriptionService;
-import org.stars.lin.service.CourseService;
+import org.stars.lin.result.Result;
+import org.stars.lin.service.*;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
-import org.stars.lin.service.SubjectService;
-import org.stars.lin.service.TeacherService;
 
 import javax.annotation.Resource;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -43,6 +43,12 @@ public class CourseServiceImpl extends ServiceImpl<CourseMapper, Course> impleme
 
     @Autowired
     private SubjectService subjectService;
+
+    @Autowired
+    private VideoService videoService;
+
+    @Autowired
+    private ChapterService chapterService;
 
     @Override
     public Map<String, Object> findPageCourse(Page<Course> pageParam, CourseQueryVo courseQueryVo) {
@@ -138,8 +144,31 @@ public class CourseServiceImpl extends ServiceImpl<CourseMapper, Course> impleme
 
         CourseDescription courseDescription = new CourseDescription();
         courseDescription.setDescription(courseFormVo.getDescription());
+        courseDescription.setId(course.getId());
         descriptionService.updateById(courseDescription);
     }
 
+    @Override
+    public CoursePublishVo getCoursePublishVo(Long id) {
+        return baseMapper.selectCoursePublishVoById(id);
+    }
 
+    @Override
+    public void publishCourseById(Long id) {
+        Course course = baseMapper.selectById(id);
+        course.setStatus(1);
+        course.setPublishTime(new Date());
+        baseMapper.updateById(course);
+    }
+
+    @Override
+    public void removeCourseById(Long id) {
+        videoService.removeVideoByCourseId(id);
+
+        chapterService.removeChapterByCourseId(id);
+
+        descriptionService.removeById(id);
+
+        baseMapper.deleteById(id);
+    }
 }

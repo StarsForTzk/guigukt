@@ -13,4 +13,5 @@ import org.stars.entity.model.vod.Video;
  */
 public interface VideoService extends IService<Video> {
 
+    void removeVideoByCourseId(Long id);
 }

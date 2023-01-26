@@ -2,6 +2,7 @@ package org.stars.lin.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.sun.xml.bind.v2.model.core.ID;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.stars.entity.model.vod.Chapter;
@@ -56,5 +57,12 @@ public class ChapterServiceImpl extends ServiceImpl<ChapterMapper, Chapter> impl
             chapterVo.setChildren(videoVoList);
         }
         return finalChapterList;
+    }
+
+    @Override
+    public void removeChapterByCourseId(Long id) {
+        LambdaQueryWrapper<Chapter> wrapper = new LambdaQueryWrapper<>();
+        wrapper.eq(Chapter::getCourseId,id);
+        baseMapper.delete(wrapper);
     }
 }

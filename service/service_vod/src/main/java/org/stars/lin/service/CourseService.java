@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 import org.stars.entity.model.vod.Course;
 import org.stars.entity.vo.vod.CourseFormVo;
+import org.stars.entity.vo.vod.CoursePublishVo;
 import org.stars.entity.vo.vod.CourseQueryVo;
 
 import java.util.Map;
@@ -25,4 +26,10 @@ public interface CourseService extends IService<Course> {
     CourseFormVo getCourseInfoById(Long id);
 
     void updateCourseId(CourseFormVo courseFormVo);
+
+    CoursePublishVo getCoursePublishVo(Long id);
+
+    void publishCourseById(Long id);
+
+    void removeCourseById(Long id);
 }

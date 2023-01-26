@@ -35,8 +35,8 @@ public class CodeGet {
 
         // 4、包配置
         PackageConfig pc = new PackageConfig();
-        pc.setModuleName("vod"); //模块名
-        pc.setParent("org.stars.lin");
+        pc.setModuleName("lin"); //模块名
+        pc.setParent("org.stars");
         pc.setController("controller");
         pc.setEntity("entity");
         pc.setService("service");
@@ -46,7 +46,7 @@ public class CodeGet {
         // 5、策略配置
         StrategyConfig strategy = new StrategyConfig();
 
-        strategy.setInclude("course","course_description","chapter","video");
+        strategy.setInclude("video_visitor");
 
         strategy.setNaming(NamingStrategy.underline_to_camel);//数据库表映射到实体的命名策略
 

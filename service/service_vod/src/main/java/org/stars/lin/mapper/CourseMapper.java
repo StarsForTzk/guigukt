@@ -2,6 +2,7 @@ package org.stars.lin.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.stars.entity.model.vod.Course;
+import org.stars.entity.vo.vod.CoursePublishVo;
 
 /**
  * <p>
@@ -13,4 +14,5 @@ import org.stars.entity.model.vod.Course;
  */
 public interface CourseMapper extends BaseMapper<Course> {
 
+    CoursePublishVo selectCoursePublishVoById(Long id);
 }
