@@ -18,7 +18,6 @@ import java.io.InputStream;
 
 @RestController
 @RequestMapping("/admin/vod/vod")
-@CrossOrigin
 public class VodController {
 
     @Autowired

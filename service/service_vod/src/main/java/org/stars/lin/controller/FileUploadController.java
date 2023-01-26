@@ -17,7 +17,6 @@ import org.stars.lin.service.FileService;
 
 @RestController
 @RequestMapping("/admin/vod/file")
-@CrossOrigin
 public class FileUploadController {
 
     @Autowired

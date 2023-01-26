@@ -6,7 +6,6 @@ import org.stars.lin.result.Result;
 import java.util.HashMap;
 import java.util.Map;
 
-@CrossOrigin  //跨域
 @RestController
 @RequestMapping("/admin/vod/user")
 public class UserLoginController {
